@@ -14,9 +14,13 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 #        return self.username
 
 class User(models.Model):
-    name = models.CharField(max_length = 100)
+    userID = models.CharField(max_length = 100)
+    username = models.CharField(max_length = 100)
     password = models.CharField(max_length = 200)
+    age = models.CharField(max_length = 3)
     sex = models.CharField(max_length = 2, default = 'F')
+    followerID = models.CharField(max_length = 100)
+    followingID = models.CharField(max_length = 100)
     location = models.CharField(max_length = 100, blank = True)
     user_image = models.CharField(max_length = 1024, default = 'test.png')
     label = models.CharField(max_length = 1000, blank = True)
@@ -24,6 +28,7 @@ class User(models.Model):
     title = models.CharField(max_length = 1000, blank = True )
 
 class Photo(models.Model):
+    photoID = models.CharField(max_length = 100)
     category = models.CharField(max_length = 20)
     begin_datatime = models.DateTimeField()
     theme = models.CharField(max_length = 1000)

@@ -46,9 +46,9 @@ def register_new_user(request):
         if len(errors) > 0:
             out_data['ret'] = 'failed'
         else:
-            if len(User.objects.filter(name = user_name)) == 0:
+            if len(User.objects.filter(username = user_name)) == 0:
                 out_data['ret'] = 'ok'
-                reg_data = User(name = user_name, password = password_md5)
+                reg_data = User(username = user_name, password = password_md5)
                 reg_data.save()
                 request.session['user'] = user_name
             else:
@@ -60,7 +60,6 @@ def login(request):
     out_data = {}
     if request.method == 'POST':
         user_name = request.POST.get('username', '')
-        print user_name
         if not user_name:
             errors.append('user name post error')
         password_md5 = request.POST.get('password', '')
@@ -69,7 +68,7 @@ def login(request):
             errors.append("password post error")
         if len(errors) > 0:
             out_data['ret'] = 'failed'
-        login_usr = User.objects.filter(name = user_name)
+        login_usr = User.objects.filter(username = user_name)
         if len(login_usr) == 0:
             print 'user_not_exist'
             out_data['ret'] = 'not_exist'
@@ -80,6 +79,6 @@ def login(request):
                 out_data['ret'] = 'ok'
             else:
                 out_data['ret'] = 'password_error'
-    print user_name
-    print password_md5 
+#    print user_name
+#    print password_md5 
     return HttpResponse(json.dumps(out_data), content_type="application/json")
