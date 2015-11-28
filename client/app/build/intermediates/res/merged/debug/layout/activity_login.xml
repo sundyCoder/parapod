@@ -51,5 +51,12 @@
 
     </LinearLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test"
+        android:id="@+id/button_test"
+        android:layout_gravity="center_horizontal" />
+
 </LinearLayout>
 <!-- From: file:/Users/Kenny_Liu/AndroidStudioProjects/Client/app/src/main/res/layout/activity_login.xml -->

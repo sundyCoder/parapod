@@ -3,6 +3,7 @@ package com.example.kenny_liu.test;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -32,6 +33,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.Manifest.permission.INTERNET;
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
@@ -87,6 +89,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onClick(View view) {
                 attemptLogin();
+            }
+        });
+
+        Button testButton = (Button) findViewById(R.id.button_test);
+        testButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(intent);
             }
         });
 
